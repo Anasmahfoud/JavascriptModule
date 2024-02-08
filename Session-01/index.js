@@ -55,7 +55,7 @@ inscrire()
 var test = true , tetsing = 5
 console.log(test)
 test = new Boolean(1)
-test = 0
+
 console.log(test)
 
 
