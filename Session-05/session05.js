@@ -50,3 +50,79 @@ switch (dAbrev){
 console.log(filiere)
 
 /// Use Switch case instead of multiple elifs
+
+
+/// iteration
+
+jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+
+for (i=0; i<=5; i++) {
+    console.log(jours[i])
+}
+
+Jours = {
+    0:"Lundi",
+    1: "Mardi",
+    2: "Mercredi",
+    3: "Jeudi",
+    4: "Vendredi",
+    5: "Samedi",
+    6: "Dimanche"
+}
+
+for (i=0; i<=5; i++) {
+    console.log(Jours[i])
+}
+
+for (item in jours){
+    console.log(jours[item])
+}
+
+for (jour of jours){
+    console.log(jour)
+}
+
+/// JIT compilation /// foreach(function)
+
+let text = "";
+let fruits = ["apple", "orange", "cherry"];
+fruits.forEach(myFunction);
+
+
+ 
+function myFunction(item, index) {
+  text += index + ": " + item + "\n" ;
+}
+
+console.log(text);
+
+/// while
+let n =  10;
+while (n<=0){
+    n -= 1;
+}
+
+console.log(n);
+
+// do while excutes atleast on time 
+
+do {
+    
+    n = n-1
+    console.log(n);
+} 
+while (n > 10 )
+
+/// break and continue
+let txt = "HI"
+for (let i =0 ; i<10; i++)
+{
+    if (i === 3) {
+        continue; // ignored the rest of this if statement
+        txt += "The number is" + i + "\n"
+    }
+    txt += "The name is" + i + "\n"
+}
+console.log(txt)
+
+/// break get out when enters a condition

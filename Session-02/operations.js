@@ -45,8 +45,3 @@ if (k === j) {
 let statut = 'etudiant';
 let age =21;
 
-if (statut){
-    console.log("great")
-}else if (!staus){
-    console.log(true)
-};
