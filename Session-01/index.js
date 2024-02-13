@@ -12,10 +12,10 @@ const PI = 3.14;
 
 // Functions //
                 // procedure //
-function greet (name){
-console.log('Hello Mr' + ' ' + name)
+function greet (name) {
+  console.log("Hello mr "+ name)
+}
 
-};
 
 greet('Anas');
 greet('Nadir');
@@ -54,7 +54,7 @@ inscrire()
 // when youdon't give a variable a value it remains undefined //
 var test = true , tetsing = 5
 console.log(test)
-test = new Boolean(1)
+test = new Boolean(0)
 test = 0
 console.log(test)
 
@@ -63,13 +63,13 @@ console.log(test)
 
 
 // while loops //
-let text;
+let text="";
 let i= 0;
 while (i < 10) {
-    text += "<br>The number is " + i;
+    text += "The number is " + i +"<br>";
     i++;
   }
-document.body.innerHTML = text
+document.body.innerHTML = text;
 console.log(text);
 
 

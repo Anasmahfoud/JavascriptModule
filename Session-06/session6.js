@@ -52,7 +52,7 @@ let sm = sommes(3,7)
 
 /// les expressions lambda
 /// .map() retourne un nouveau tableau / doesn't modify
-/// anonym functions
+///  functions anonyme
 
 let jours = ["Lundi", "Mardi", "Mercredi" , "jeudi"];
 let i = 0;
@@ -83,6 +83,8 @@ const stagiares = [
     {nom: "Hilmi" , prenom: "Ilyas" , age: 18} ,
     {nom: "Ouafik" , prenom: "Mohamed" , age: 18} 
 ];
+
+console.log(stagiares)
 
 
 stagiares.map((item)=> {

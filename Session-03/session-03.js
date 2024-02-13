@@ -3,8 +3,9 @@ document.write("to write in the document we use .write")
 document.write("<ul><li>item 1</li> <li>item 2</li> <li>item 3</li> </ul>")
 //window.print() to print page
 
-//window.alert( ) to make pop up alert
 
+//window.alert( ) to make pop up alert
+window.alert("Hi");
 
 // primitives types in JS:
     console.log(typeof(5));
@@ -41,16 +42,18 @@ document.write("<ul><li>item 1</li> <li>item 2</li> <li>item 3</li> </ul>")
     console.log(Object.prototype.toString.call(null));
     console.log(Object.prototype.toString.call(undefined));
     console.log(Object.prototype.toString.call([1,2,3]));
+    console.log(Object.prototype.toString.call({id :1, nom:"Anas"}));
+    
 
 // to see if it's an object of a class:
     console.log(Object(3) instanceof Number);
 
 // spread operator (operation de propagation):
     let liste = [20,30,40]
-    let cliste = [...liste]
+    let cliste = [...liste,90]
     // [...[]]  {...{}}
 
-    liste.push(80)
+    cliste.push(80)
 
     console.log(cliste)
     console.log(liste)

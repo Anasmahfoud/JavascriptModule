@@ -40,6 +40,8 @@ let a = Number(y);
 console.log(z,a)
 console.log(String(x) + "Anas")
 console.log(Number(true))
+console.log(Number(undefined))
+console.log(Number(null))
 console.log(Boolean(1))
 
 let num = "101";
@@ -81,3 +83,4 @@ if (vDate.getMilliseconds() < 100) {
 } else {
   console.log("No");
 }
+
