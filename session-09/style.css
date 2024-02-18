@@ -1,0 +1,9 @@
+.container {
+    height: 100px;
+    width: 500px;
+    background-color: rosybrown;
+}
+
+.encadrer {
+    border: 5px solid red;
+}
