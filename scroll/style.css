@@ -1,0 +1,21 @@
+@keyframes slideIn{
+    0%{
+        transform: translateX(-500px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(500px);
+        opacity: 1; 
+    }
+}
+
+
+.box{
+    animation-name: slideIn;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: both;
+    background-color: salmon;
+    height: 300px;
+    width: 500px;
+}
