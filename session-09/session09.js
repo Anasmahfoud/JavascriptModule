@@ -21,7 +21,6 @@ document.querySelector(".btn-delete").addEventListener("click", function() {
     const parent = document.querySelector(".section-02");
     const goodJob = document.createElement("p");
     goodJob.innerHTML = "Good job you destroyed the Virus!"
-    // "Good job you killed Hitler you saved alot of people!<br> You're cool man yuou're like a hero or something.<br/> What are you waiting for go there's nothing else to do."; //
     goodJob.style.color = "green";
     goodJob.style.fontSize= "50px"
     parent.append(goodJob);
