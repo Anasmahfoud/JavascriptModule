@@ -21,6 +21,7 @@ document.querySelector(".btn-delete").addEventListener("click", function() {
     const parent = document.querySelector(".section-02");
     const goodJob = document.createElement("p");
     goodJob.innerHTML = "Good job you destroyed the Virus!"
+    // "Good job you killed Hitler you saved alot of people!<br> You're cool man yuou're like a hero or something.<br/> What are you waiting for go there's nothing else to do."; //
     goodJob.style.color = "green";
     goodJob.style.fontSize= "50px"
     parent.append(goodJob);
@@ -34,9 +35,9 @@ document.querySelector(".btn-delete").addEventListener("click", function() {
       const second =   document.querySelector(".funny");
       document.body.replaceChild(first,second);
     })
+.
 
-
-/// Create container
+/// Create container and add class
 /// classList("") className = ""
 /// the second and third got bg class="c1 c2 C3" he will take the first wich is c2
 document.querySelector(".btn-create-container").addEventListener("click", function(){
