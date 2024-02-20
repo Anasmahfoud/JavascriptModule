@@ -46,7 +46,7 @@ document.querySelector("#btn-afficher").addEventListener("click" , (e) =>{
             document.querySelector("table").append(tr);
             let Keys = ["noms", "prenoms", "ages"]
             
-            for ( let i = 0 ;i<= UserList.length ; i++){
+            for ( let i = 0 ;i<= 2 ; i++){
                 let td = document.createElement("td");
                 td.innerHTML = item[Keys[i]];
                 td.style.border = "2px solid black"
