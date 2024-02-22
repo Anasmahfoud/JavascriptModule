@@ -1,6 +1,7 @@
 //// People Table
 
-const UserList = []
+let UserList = []
+
 
 document.querySelector("#btn-ajouter").addEventListener("click", function(e){
     e.preventDefault();
@@ -34,8 +35,8 @@ document.querySelector("#btn-afficher").addEventListener("click" , (e) =>{
         const tr = document.createElement("tr");
         document.querySelector("table").append(tr);
 
-        let title = ["Nom", "Prenom", "Age"]
-        for (let k=0 ; k <= 2 ; k++){
+        let title = ["Nom", "Prenom", "Age" , "Suprimmer"]
+        for (let k=0 ; k <= 3 ; k++){
         let th = document.createElement("th");
         th.innerHTML = title[k];
         th.style.border = "2px solid black"
@@ -53,11 +54,30 @@ document.querySelector("#btn-afficher").addEventListener("click" , (e) =>{
                 document.querySelector("tr:last-of-type").append(td);
                 created = true;
             }
+            let sup = document.createElement("button");
+            sup.innerHTML = "Suprimmer";
+            sup.style.border = "2px solid black"
+            sup.addEventListener("click",(e) => {
+                e.preventDefault();
+                let content =  tr.firstElementChild.innerHTML;
+                console.log(content);
+                for (let f =0 ; f < UserList.length ; f++){
+                    if (content == UserList[f].noms){
+                        let halfBeforeUserList = UserList.slice(0,f);
+                        let halfAfterUserList = UserList.slice(f+1);
+                        UserList = halfBeforeUserList.concat(halfAfterUserList);
+                    }
+                }
+                tr.remove();
+                printed = printed -1;
+                
+            })
+            document.querySelector("tr:last-of-type").append(sup)
             printed = printed + 1;
         })
     }else if (created == true){
         UserList.map(function(item,index,array){
-            if ( printed-1 < index ){
+            if ( printed <= index ){
                 const tr = document.createElement("tr");
                 document.querySelector("table").append(tr); 
                 let Keys = ["noms", "prenoms", "ages"]
@@ -68,8 +88,46 @@ document.querySelector("#btn-afficher").addEventListener("click" , (e) =>{
                    document.querySelector("tr:last-of-type").append(td);
                    created = true;
                 }
-                printed = printed +1;
+                let sup = document.createElement("button");
+                sup.innerHTML = "Suprimmer";
+                sup.style.border = "2px solid black"
+                sup.addEventListener("click",(e) => {
+                e.preventDefault();
+                let content =  tr.firstElementChild.innerHTML;
+                console.log(content);
+                for (let f =0 ; f < UserList.length ; f++){
+                    if (content == UserList[f].noms){
+                        let halfBeforeUserList = UserList.slice(0,f);
+                        let halfAfterUserList = UserList.slice(f+1);
+                        UserList = halfBeforeUserList.concat(halfAfterUserList);
+                    }
+                }
+                tr.remove();
+                printed = printed - 1;
+                
+                })
+                document.querySelector("tr:last-of-type").append(sup)
+                printed = printed + 1;
             }
         })
     }    
+})
+
+
+
+document.querySelector("#btn-suprimmer-all").addEventListener("click", (e) => {
+    e.preventDefault();
+    let tables = document.querySelector("table");
+    let rows = tables.children;
+    for (let m = UserList.length  ; m >= 1; m-- ){
+        rows[m].remove()
+    }
+    UserList = [];
+    printed = 0;
+})
+
+
+document.querySelector(".now").addEventListener("click", (e) =>{
+    e.preventDefault();
+    console.log("now: ",UserList);
 })
