@@ -87,6 +87,10 @@ console.log(b);
 let toGuess;
 let guess;
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
 function main (e){
     e.preventDefault();
     toGuess = Number(document.querySelector(".main-display").value);

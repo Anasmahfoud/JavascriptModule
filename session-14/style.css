@@ -20,12 +20,14 @@ body{
 div{
     border: 4px black solid;
     padding: 3vw;
-    width: 18vw ;
+    width: 23vw ;
+    height: 50vh;
     margin: 10vw 0;
 }
 
 form > *:not(i, p){
     margin-bottom: 10px;
+    
 }
 
 #status1{

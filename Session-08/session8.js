@@ -5,7 +5,7 @@ console.log(document.querySelector(".title"))
 //// query Selector ALL 
 console.log(document.querySelectorAll(".title-all"))
 
-///// List node
+///// nodeLiqst
 let vH2 = document.querySelectorAll(".title-all")
 
 //// for each for all elements in list nodes
@@ -29,7 +29,9 @@ vH22[1].style.fontSize = "100px";
 vH22[0].style.marginTop = "100px";
 vH22[0].style.height = "200px";
 
-//// GetElementById() GetElementsByClassName()  GetElemetsBytagName() GetElementsByName()
-
+//// GetElementById(): one element GetElementsByClassName()  : Html collection GetElemetsBytagName():Html collection  GetElementsByName() : of attr name Nodeslist
+console.log(document.getElementsByClassName("title") );
+console.log(document.getElementsByTagName("h2") );
+document.getElementsByTagNameNS()
 
 /// get direct Body Head Title Cookie Script  
