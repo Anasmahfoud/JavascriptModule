@@ -30,8 +30,25 @@ stagiares.indexOf("ILYAS");
 // splice(1,1) removes just at index 1
 // sort
 // reverse
-// reduce
+// fill 
 
+// reduce loop on array
+const Prices = [1,5,9,6]
+Prices.reduce((total,item)=>{
+   console.log("Total " +total)
+   console.log("Item " + item)
+   return total+ item
+},0)
+// at(index) 
+//fill(1)
+//join("_")
+//includes(5) true false
+// every() returns true or false 
+let res = Prices.every((item , index , array)=>{
+    return item > 1;
+})
+
+console.log(res);
 
 
 // value
