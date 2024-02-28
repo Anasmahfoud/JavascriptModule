@@ -1,0 +1,51 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.success{
+    outline-style: none;
+    border: 3px blue solid;
+    border-radius: 2px;
+    
+}
+
+.fail{
+    outline-style: none;
+    border: 2px red solid;
+}
+
+div{
+    border: 4px black solid;
+    padding: 3vw;
+    width: 18vw ;
+    margin: 10vw 0;
+}
+
+form > *:not(i, p){
+    margin-bottom: 10px;
+}
+
+#status1{
+    display: none;
+    color: red;
+    margin: 0 0 0 0;}
+
+#status2{
+    display: none;
+    color: red;
+    margin: 0 0 5px 0; 
+}
+
+#status3{
+    display: none;
+    color: red;
+    margin: 0 0 5px 0; 
+}
+
+
+
+
+
