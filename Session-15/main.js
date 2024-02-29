@@ -76,3 +76,6 @@ let index = stagiares.findIndex((item)=>{
     return item === "ANAS"
 })
 console.log(index)
+
+
+

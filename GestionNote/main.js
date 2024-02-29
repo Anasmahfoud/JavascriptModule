@@ -102,9 +102,12 @@ function validateForm(type){
     checkCIN = true;
     
     if (CINv.length != 8 || signed == true && type == "submit"){
-        let text = "Your CIN is less than 8. "
+        let text = "";
         if (signed == true ){
             text += "You CIN is not unique"
+        }
+        if(CINv.length != 8 ){
+            text += "Your CIN is less than 8. "
         }
         statuscin.innerHTML = text;
         statuscin.classList.add("failstatus")
@@ -317,9 +320,47 @@ cssquery("#search").addEventListener("click",(e)=>{
     }
 })
 
-
+// reset
 cssquery("#res").addEventListener("click",(e) => {
     e.preventDefault();
     cssquery("form").reset();
 
 })
+
+
+let count = 0;
+
+let avg = 0;
+
+// stats refresh
+let intervalStat = setInterval(()=>{
+    if (count != Stagiares.length){
+        count = Stagiares.length;
+        
+        let sum = 0;
+        Stagiares.forEach((item) =>{
+            let Listtotal = Object.values(item)
+            let total = 0;
+            Listtotal.forEach((value, num)=>{
+                if (num > 3){
+                    console.log(value)
+                    total += Number(value);
+                }
+            })
+            
+                sum += total
+                console.log(total)
+           
+            
+        })
+
+        avg = sum / count;
+        cssquery("#count p:last-of-type").innerHTML = count;
+        cssquery("#avg p:last-of-type").innerHTML = Math.round(avg);
+        
+
+    }
+    
+
+
+},3000)
