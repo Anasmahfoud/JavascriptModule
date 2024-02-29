@@ -3,11 +3,13 @@ let cssquery = (query) =>{
 }
 
 let Stagiares =[];
+let CIN = cssquery("#cin");
 let nam = cssquery("#name");
 let lastName = cssquery("#lastname");
-let branche = cssquery("#branche");
+let branche = cssquery("#branche"); 
 let module = cssquery("#module");
 let grade = cssquery("#grade");
+let search = cssquery("#searchInput")
 let cM = module.children;
 let p;
 
@@ -43,19 +45,22 @@ branche.addEventListener("change", () =>{
     }
 })
 
+let CINv;
 let namev;
 let lastNamev;
 let branchev;
 let modulev;
 let gradev;
+let searchv;
 let signed ;
 let indexs;
 let obje;
 
 
-
+// Submit
 cssquery("#sub").addEventListener("click", (e)=>{
     e.preventDefault();
+    CINv = CIN.value;
     namev = nam.value;
     lastNamev = lastName.value;
     signed = false;
@@ -63,7 +68,7 @@ cssquery("#sub").addEventListener("click", (e)=>{
     modulev = module.value;
     gradev = grade.value;
     Stagiares.map((item , index)=>{
-        if (item.name == namev){
+        if (item.CIN == CINv){
             signed = true;
             indexs = index;
         }
@@ -81,6 +86,7 @@ cssquery("#sub").addEventListener("click", (e)=>{
     else if (signed == false){
         
         let obj = {}
+        obj["CIN"] = CINv;
         obj["name"] = namev;
         obj["lastName"] = lastNamev ;
         obj["branche"] = branchev;
@@ -94,6 +100,7 @@ cssquery("#sub").addEventListener("click", (e)=>{
 cssquery("#modify").addEventListener("click" , (e)=>{
 
     e.preventDefault();
+    CINv = CIN.value;
     namev = nam.value;
     lastNamev = lastName.value;
     signed = false;
@@ -101,12 +108,13 @@ cssquery("#modify").addEventListener("click" , (e)=>{
     modulev = module.value;
     gradev = grade.value;
     Stagiares.map((item , index)=>{
-        if (item.name == namev){
+        if (item.CIN == CINv){
             signed = true;
             indexs = index;
         }})
     if (signed == true){
         let obj = Stagiares[indexs]
+        obj["CIN"] = CINv;
         obj["name"] = namev;
         obj["lastName"] = lastNamev ;
         obj["branche"] = branchev;
@@ -122,17 +130,25 @@ cssquery("#delete").addEventListener("click", (e)=>{
     e.preventDefault();
     let Del= false ;
     let toDel;
-    namev = nam.value
+    CINv = CIN.value;
     Stagiares.forEach((item,index)=>{
-        if (item.name == namev){
+        if (item.CIN == CINv){
             Del = true;
             toDel =index;
+            console.log(toDel);
+            console.log(Del)
         }
     })
     if (Del==true){
-        Stagiares.splice(toDel,toDel);
+        if (toDel == 0){
+            Stagiares.shift();
+        }else{
+            Stagiares.splice(toDel,toDel);
+        }
+        
+        console.log("spliced")
     }
-    else{
+    else if(Del == false){
         alert("This student doesn't exist.")
     }
 
@@ -140,14 +156,14 @@ cssquery("#delete").addEventListener("click", (e)=>{
 })
 
 
-
+let found;
 // search
 cssquery("#search").addEventListener("click",(e)=>{
     e.preventDefault();
-    namev = nam.value
-    let found =false;
+    searchv = search.value;
+    found =false;
     Stagiares.forEach((item,index)=>{
-        if (item.name == namev){
+        if (item.CIN == searchv){
             console.log(item)
             let Skeys = Object.keys(item);
             let Svalues = Object.values(item);
@@ -157,10 +173,10 @@ cssquery("#search").addEventListener("click",(e)=>{
 
 
             })
-
+            found = true
             cssquery("p").innerHTML= text;
             cssquery("p").style.display = "block"
-            found = true
+           
         }
         
     })

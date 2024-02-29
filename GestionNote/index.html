@@ -10,6 +10,10 @@
     <fieldset>
     <legend>Gestion de Stagiaire</legend>
     <form action="">
+        <label for="cin">CIN: </label>
+        <br>
+        <input type="text" id="cin">
+        <br>
         <label for="name">Name: </label>
         <br>
         <input type="text" id="name">
@@ -44,8 +48,11 @@
         <button id="res">RESET</button>
         <button id="modify">MODIFY</button>
         <button id="delete">DELETE</button>
-        <button id="search">SEARCH</button>
+        
     </form>
+    </fieldset>
+    <fieldset>
+        <input type="text" id="searchInput"> <button id="search">SEARCH</button>
     </fieldset>
     <p style="display: hidden; align-items: center;"></p>
     <script src="main.js"></script>
