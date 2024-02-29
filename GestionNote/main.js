@@ -208,6 +208,10 @@ function validateForm(type){
     }
     
     // get bool
+    if(emptyimg == true && type == "submit"){
+        alert("You need Picture.");
+        return false
+    }
     if (checkCIN == false || namev.length < 4 || lastNamev.length < 4 || gradev > 40 || branchev == "" || gradev == ""){
         return false
     }else{
@@ -245,6 +249,7 @@ cssquery("#sub").addEventListener("click", (e)=>{
 
 
 // get file url
+let emptyimg = true;
 let img ;
 let fileEL = cssquery("#fileread")
 fileEL.addEventListener("change",()=> {
@@ -254,7 +259,7 @@ fileEL.addEventListener("change",()=> {
     
     reader.addEventListener("load",()=>{
         img = reader.result;
-
+        emptyimg = false;
     })
 })
 
