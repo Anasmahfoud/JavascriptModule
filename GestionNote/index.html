@@ -4,24 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion de stagiaires</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Gestion</h1>
+    
+    <nav>
+        <h1>GESTION STAGIAIRES</h1>
+    </nav>
     <fieldset>
-    <legend>Gestion de Stagiaire</legend>
+    <legend>GESTION DE STAGIAIRES</legend>
     <form action="">
         <label for="cin">CIN: </label>
         <br>
         <input type="text" id="cin">
         <br>
+        <p id="statuscin">h</p>
         <label for="name">Name: </label>
         <br>
         <input type="text" id="name">
         <br>
+        <p id="statusname">h</p>
         <label for="lastname">Last name: </label>
         <br>
         <input type="text" id="lastname">
         <br>
+        <p id="statuslastname">h</p>
         <label for="branche">Branch: </label>
         <br>
         <select name="" id="branche" >
@@ -31,6 +38,7 @@
             <option value="GD">Design Graphique</option>
         </select>
         <br>
+        <p id="statusbranche">h</p>
         <label for="module">Module: </label>
         <br>
         <select name="" id="module">
@@ -39,10 +47,12 @@
             <option value=""></option>
         </select>
         <br>
-        <label for="module">Grade: </label>
+        <p>h</p>
+        <label for="garde">Grade: </label>
         <br>
         <input type="number" id="grade">
         <br>
+        <p id="statusgrade">h</p>
 
         <button id="sub">SUBMIT</button>
         <button id="res">RESET</button>
@@ -52,9 +62,13 @@
     </form>
     </fieldset>
     <fieldset>
-        <input type="text" id="searchInput"> <button id="search">SEARCH</button>
+        <input type="search" id="searchInput"> <button id="search">SEARCH</button>
     </fieldset>
-    <p style="display: hidden; align-items: center;"></p>
+    <p style="display: hidden; align-items: center;" id="display"></p>
+    <div id="stat">
+        <div id="count"><p>COUNT</p><p>10</p> </div>
+        <div id="avg"><p>AVG</p><p>20</p></div>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>
