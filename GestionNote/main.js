@@ -238,6 +238,7 @@ cssquery("#sub").addEventListener("click", (e)=>{
 
         statRefresh();
         Stagiarespics.push(img);
+        emptyimg = true;
         
 
     }
