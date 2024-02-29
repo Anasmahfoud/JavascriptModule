@@ -6,6 +6,12 @@ Cat.size = 12
 delete Cat.age;
 console.log(Cat)
 
+// GET ARRAY OF OBJECT // 
+// let keys = Cat.keys
+// let vals = Cat.values
+// let entries Cat.entries list of lists
+// entires[0] [2]
+// Object.create(Cat, {}) prototype
 
 const stagiares = new Array("ANAS" , "KHALID" , "ZAKARIA", "OUAFIK" , "ANAS");
 const arr = new Array(4)
