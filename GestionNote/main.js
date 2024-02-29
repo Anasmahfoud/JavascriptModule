@@ -129,7 +129,7 @@ cssquery("#delete").addEventListener("click", (e)=>{
             toDel =index;
         }
     })
-    if (Del=true){
+    if (Del==true){
         Stagiares.splice(toDel,toDel);
     }
     else{
@@ -165,7 +165,6 @@ cssquery("#search").addEventListener("click",(e)=>{
         
     })
     if(found == false){
-        
         alert("This Student doesn't exist.")
     }
 })
