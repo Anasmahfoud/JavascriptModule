@@ -71,6 +71,14 @@ label{
     border:3px solid black;
     padding: 0.5vw 1.3vw;
     color: white;
+    transition-property: all;
+    transition-duration: 0.2s;
+}
+
+#search:hover{
+    cursor: pointer;
+    background-color: rgb(22, 22, 22);
+    border:3px solid rgb(22, 22, 22);
 }
 
 fieldset p {
@@ -96,6 +104,77 @@ fieldset p {
 
 
 /* Buttons in form */
+
+#sub{
+   
+    background-color: rgb(0, 85, 0);
+    border-radius: 4px;
+    border:3px solid rgb(0, 85, 0);
+    padding: 0.5vw 1.3vw;
+    color: white;
+    transition-property: all;
+    transition-duration: 0.2s;
+}
+
+#sub:hover{
+    cursor: pointer;
+    background-color: rgb(1, 63, 1);
+    padding: 0.5vw 1.4vw;
+    border:3px solid rgb(1, 63, 1);
+}
+
+#res{
+    background-color: rgb(0, 125, 156);
+    border-radius: 4px;
+    border:3px solid rgb(0, 125, 156);
+    padding: 0.5vw 1.3vw;
+    color: white;
+    transition-property: all;
+    transition-duration: 0.2s;
+}
+#res:hover{
+    cursor: pointer;
+    background-color: rgb(2, 84, 104);
+    padding: 0.5vw 1.4vw;
+    border:3px solid rgb(2, 84, 104);
+}
+
+#modify{
+    background-color: rgb(125, 63, 2);
+    border-radius: 4px;
+    border:3px solid rgb(125, 63, 2);
+    padding: 0.5vw 1.3vw;
+    color: white;
+    transition-property: all;
+    transition-duration: 0.2s;
+}
+#modify:hover{
+    cursor: pointer;
+    background-color: rgb(91, 47, 2);
+    padding: 0.5vw 1.4vw;
+    border:3px solid rgb(91, 47, 2);
+}
+
+#delete{
+    background-color: rgb(117, 2, 2);
+    border-radius: 4px;
+    border:3px solid rgb(117, 2, 2);
+    padding: 0.5vw 1.3vw;
+    color: white;
+    transition-property: all;
+    transition-duration: 0.2s;
+}
+
+#delete:hover{
+    cursor: pointer;
+    background-color: rgb(83, 3, 3);
+    padding: 0.5vw 1.4vw;
+    border:3px solid rgb(83, 3, 3);
+}
+
+
+
+/* stats */
 
 #stat{
     display: flex;
