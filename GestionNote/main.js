@@ -230,7 +230,8 @@ cssquery("#sub").addEventListener("click", (e)=>{
         obj["branche"] = branchev;
         obj[modulev] = gradev;
         Stagiares.push(obj)
-    
+
+        statRefresh();
     }
     else{
         alert("Not submitted")
@@ -253,6 +254,7 @@ cssquery("#modify").addEventListener("click" , (e)=>{
         obj["lastName"] = lastNamev ;
         obj["branche"] = branchev;
         obj[modulev] = gradev;
+        statRefresh();
         }else if(signed == false){
         alert("This student doesn't exist.")
         }
@@ -283,11 +285,12 @@ cssquery("#delete").addEventListener("click", (e)=>{
             Stagiares.splice(indexs,indexs);
         }
         
-        console.log("spliced")
+        statRefresh();
     }
     else if(signed == false){
         alert("This student doesn't exist.")
     }
+    
 
 
 })
@@ -332,35 +335,35 @@ let count = 0;
 
 let avg = 0;
 
-// stats refresh
-let intervalStat = setInterval(()=>{
+// stat refresh
+function statRefresh(){
     if (count != Stagiares.length){
         count = Stagiares.length;
         
+    }
+
         let sum = 0;
         Stagiares.forEach((item) =>{
             let Listtotal = Object.values(item)
             let total = 0;
+            let mod = 0;
             Listtotal.forEach((value, num)=>{
                 if (num > 3){
+                    mod +=1;
                     console.log(value)
                     total += Number(value);
                 }
             })
-            
+                total = total/mod
                 sum += total
                 console.log(total)
            
             
         })
 
-        avg = sum / count;
+        avg = sum / count 
         cssquery("#count p:last-of-type").innerHTML = count;
         cssquery("#avg p:last-of-type").innerHTML = Math.round(avg);
-        
-
-    }
-    
+}
 
 
-},3000)
