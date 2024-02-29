@@ -5,6 +5,7 @@ let cssquery = (query) =>{
 
 /// intiialazing variables
 let Stagiares =[];
+let Stagiarespics = []
 let CIN = cssquery("#cin");
 let nam = cssquery("#name");
 let lastName = cssquery("#lastname");
@@ -232,12 +233,34 @@ cssquery("#sub").addEventListener("click", (e)=>{
         Stagiares.push(obj)
 
         statRefresh();
+        Stagiarespics.push(img);
+        
+
     }
     else{
         alert("Not submitted")
     }
    
 })
+
+
+// get file url
+let img ;
+let fileEL = cssquery("#fileread")
+fileEL.addEventListener("change",()=> {
+    let reader = new FileReader();
+    
+    reader.readAsDataURL(fileEL.files[0])
+    
+    reader.addEventListener("load",()=>{
+        img = reader.result;
+
+    })
+})
+
+
+
+
 // modify
 cssquery("#modify").addEventListener("click" , (e)=>{
 
@@ -255,6 +278,7 @@ cssquery("#modify").addEventListener("click" , (e)=>{
         obj["branche"] = branchev;
         obj[modulev] = gradev;
         statRefresh();
+        Stagiarespics[indexs] = img;
         }else if(signed == false){
         alert("This student doesn't exist.")
         }
@@ -274,8 +298,6 @@ cssquery("#delete").addEventListener("click", (e)=>{
         if (item.CIN == CINv){
             signed = true;
             indexs =index;
-            console.log(indexs);
-            console.log(signed)
         }
     })
     if (signed==true){
@@ -302,19 +324,32 @@ cssquery("#search").addEventListener("click",(e)=>{
     e.preventDefault();
     searchv = search.value;
     found =false;
+    cssquery("#profilemodule1").innerHTML = "";
+    cssquery("#profilemodule2").innerHTML = "" ;
+    cssquery("#profilemodule3").innerHTML = "" ;
+
     Stagiares.forEach((item,index)=>{
         if (item.CIN == searchv){
-            console.log(item)
             let Skeys = Object.keys(item);
             let Svalues = Object.values(item);
-            let text ="";
-            Skeys.forEach((value,index)=>{
-                text +=`-${value}: ${Svalues[index]} <br> `
-            })
+            let textArr = ["CIN","Name", "Last Name" , "Branche"]
+            let valsarr =[cssquery("#profilecin"),cssquery("#profilename"), cssquery("#profilelastname"), cssquery("#profilebranche"), cssquery("#profilemodule1"), cssquery("#profilemodule2"), cssquery("#profilemodule3")]
+            Svalues.forEach((value,index)=>{
+                if(index<=3){
+                    valsarr[index].innerHTML = `-${textArr[index]}: ${value}`
+                }else{
+                    valsarr[index].innerHTML = `-${Skeys[index]}: ${value}`
 
+                }
+            })
+            let profileList = document.querySelectorAll("fieldset:nth-of-type(3) *")
+            profileList.forEach((item)=>{
+                item.style.visibility ="visible";
+            })
             found = true
-            cssquery("#display").innerHTML= text;
-            cssquery("#display").style.display = "block"
+            cssquery("#profilepic img").setAttribute("src" , Stagiarespics[index])
+
+            
         }
         
     })
@@ -350,13 +385,12 @@ function statRefresh(){
             Listtotal.forEach((value, num)=>{
                 if (num > 3){
                     mod +=1;
-                    console.log(value)
                     total += Number(value);
                 }
             })
                 total = total/mod
                 sum += total
-                console.log(total)
+
            
             
         })
