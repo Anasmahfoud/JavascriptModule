@@ -15,38 +15,60 @@ let grade = cssquery("#grade");
 let search = cssquery("#searchInput")
 let cM = module.children;
 let p;
+const branchList = [{code: "DD", libelle: "Developpement Digitale", 
+                    module: [{code: "python" , libelle: "Python"},
+                             {code: "php", libelle: "PHP"}
+                            ]},
+                  {code: "IR", libelle: "Infrastructure Digitale", module: [{code: "linux" , libelle: "Linux"},
+                  {code: "networking" , libelle: "Networking"},
+                  {code: "kali" , libelle: "KALI"}
+                 ]},
+                  {code: "GD", libelle: "Graphic Design",module: [{code: "color theory" , libelle: "Color Theory"},
+                  {code: "principles" , libelle: "Principles"}
+                 ] }
+                ]
 
 
 // get branche selected value
-branche.addEventListener("change", () =>{
+branche.addEventListener("change", (event) =>{
    p = branche.options[branche.selectedIndex].value;
     //console.log(p)
+    let codeSelectedBranche = event.target.value;
 
-    if (p=="DD"){
-        cM[0].value = "Python"
-        cM[0].innerHTML = "Python"
-        cM[1].value = "Javascript"
-        cM[1].innerHTML = "Javascript"
-        cM[2].value = "PHP"
-        cM[2].innerHTML = "PHP"
+    let selectedBranche = branchList.find((itemValue)=>{
+        return itemValue.code === codeSelectedBranche ;
+    })
+    for (let i =(cM.length -1) ;i>=0 ; i-- ) {
+        module.removeChild(cM[i])
     }
-    else if (p=="IR"){
-        cM[0].value = "Linux"
-        cM[0].innerHTML = "Linux"
-        cM[1].value = "Networking"
-        cM[1].innerHTML = "Networking"
-        cM[2].value = "Cybersecurity"
-        cM[2].innerHTML = "Cyber Security"
-    }
-    else  if (p=="GD"){
-        cM[0].value = "Color Theory"
-        cM[0].innerHTML = "Color"
-        cM[1].value = "Principles"
-        cM[1].innerHTML = "Principles"
-        cM[2].value = "Typography"
-        cM[2].innerHTML = "Typography"
-    }
+    selectedBranche.module.map((itemValue)=>{
+        let option = document.createElement("option");
+        option.innerHTML = itemValue.libelle;
+        option.setAttribute("value",itemValue.code);
+        module.append(option);
+    }) 
+
+    
 })
+
+document.addEventListener("DOMContentLoaded",()=>{
+    branchList.map((itemValue)=>{
+        let option = document.createElement("option");
+        option.setAttribute("value",itemValue.code)
+        option.innerHTML = itemValue.libelle
+        branche.append(option)
+    })
+    branchList[0].module.forEach((itemValue)=>{
+        let option = document.createElement("option");
+        option.setAttribute("value",itemValue.code);
+        option.innerHTML = itemValue.libelle;
+        module.append(option)
+
+    })
+    
+})
+
+
 
 // functions to get values
 function getVariables(){
@@ -56,6 +78,7 @@ function getVariables(){
     branchev = branche.value;
     modulev = module.value;
     gradev = grade.value;
+    searchv = search.value;
 }
 
 // intitializing value variables
@@ -184,12 +207,23 @@ function validateForm(type){
 
 
     //validate grade
-    if (gradev == undefined){
+    let goodGrade = true;
+    if (gradev > 40){
+        grade.classList.remove("success")
+        
+        grade.classList.add("fail")
+        statusGrade.classList.add("failstatus")
+        statusGrade.innerHTML = "can't be more than 40!"
+        goodGrade = false;
+
+    }
+    if (gradev == undefined ){
         grade.classList.remove("success")
         
         grade.classList.add("fail")
         statusGrade.classList.add("failstatus")
         statusGrade.innerHTML = "can't leave this empty!"
+        goodGrade = false;
 
     }
     if (gradev == ""){
@@ -198,8 +232,10 @@ function validateForm(type){
         grade.classList.add("fail")
         statusGrade.classList.add("failstatus")
         statusGrade.innerHTML = "can't leave this empty."
+        goodGrade = false;
 
-    }else{
+    }
+    if(goodGrade == true){
         grade.classList.remove("fail")
         statusGrade.classList.remove("failstatus")
         
@@ -233,11 +269,14 @@ cssquery("#sub").addEventListener("click", (e)=>{
         obj["name"] = namev;
         obj["lastName"] = lastNamev ;
         obj["branche"] = branchev;
-        obj[modulev] = gradev;
-        Stagiares.push(obj)
+        obj["module"] = {}
+        obj["module"][modulev] = gradev;
+        obj["img"] = img
+        obj["avg"] = Object.values(obj["module"]).reduce((total,itemValue)=>{return total + itemValue},0)/ Object.values(obj["module"]).length
 
+        Stagiares.push(obj)
+        console.log(obj)
         statRefresh();
-        Stagiarespics.push(img);
         emptyimg = true;
         
 
@@ -282,9 +321,9 @@ cssquery("#modify").addEventListener("click" , (e)=>{
         obj["name"] = namev;
         obj["lastName"] = lastNamev ;
         obj["branche"] = branchev;
-        obj[modulev] = gradev;
+        obj["module"][modulev] = gradev;
+        obj["avg"] = (Object.values(Stagiares[indexs].module).reduce((total,itemValue)=>{return total + Number(itemValue)},0))/ Object.values(Stagiares[indexs].module).length
         statRefresh();
-        Stagiarespics[indexs] = img;
         }else if(signed == false){
         alert("This student doesn't exist.")
         }
@@ -323,47 +362,100 @@ cssquery("#delete").addEventListener("click", (e)=>{
 
 })
 
-
-let found;
-// search
-cssquery("#search").addEventListener("click",(e)=>{
+//Show filter
+cssquery("fieldset:nth-of-type(2) a").addEventListener("click",(e)=>{
     e.preventDefault();
-    searchv = search.value;
-    found =false;
-    cssquery("#profilemodule1").innerHTML = "";
-    cssquery("#profilemodule2").innerHTML = "" ;
-    cssquery("#profilemodule3").innerHTML = "" ;
-
-    Stagiares.forEach((item,index)=>{
-        if (item.CIN == searchv){
-            let Skeys = Object.keys(item);
-            let Svalues = Object.values(item);
-            let textArr = ["CIN","Name", "Last Name" , "Branche"]
-            let valsarr =[cssquery("#profilecin"),cssquery("#profilename"), cssquery("#profilelastname"), cssquery("#profilebranche"), cssquery("#profilemodule1"), cssquery("#profilemodule2"), cssquery("#profilemodule3")]
-            Svalues.forEach((value,index)=>{
-                if(index<=3){
-                    valsarr[index].innerHTML = `-${textArr[index]}: ${value}`
-                }else{
-                    valsarr[index].innerHTML = `-${Skeys[index]}: ${value}`
-
-                }
-            })
-            let profileList = document.querySelectorAll("fieldset:nth-of-type(3) *")
-            profileList.forEach((item)=>{
-                item.style.visibility ="visible";
-            })
-            found = true
-            cssquery("#profilepic img").setAttribute("src" , Stagiarespics[index])
-
-            
-        }
-        
-    })
-    if(found == false){
-        alert("This Student doesn't exist.")
-    }
+    cssquery(".filter").classList.toggle("hide");
 })
 
+
+// search
+cssquery('#search').addEventListener("click",()=>{
+    getVariables()
+
+    let toShow;
+    switch(cssquery("[name='searchType']:checked").value){
+        case "cin":
+            toShow = Stagiares.filter((itemValue=>{
+                return Object.values(itemValue).includes(searchv) == true;
+            }))
+            break;
+        case "branch":
+            toShow = Stagiares.filter((itemValue=>{
+                return Object.values(itemValue).includes(searchv) == true;
+            }))
+            console.log(toShow);
+            break;
+        case "avg":
+            switch (cssquery("[name='sort']:checked").value){
+                case 'eq':
+                    toShow = Stagiares.filter((itemValue=>{
+                        return itemValue.avg == searchv;
+                       
+                    }))
+                    
+                    break;
+                case 'big':
+                    toShow = Stagiares.filter((itemValue=>{
+                        return itemValue.avg > searchv;
+                        
+                    }))
+                    
+                    break;
+                case 'low':
+                    toShow = Stagiares.filter((itemValue=>{
+                        return itemValue.avg < searchv;
+                        
+                    }))
+                    
+                    break;
+            }
+            break;
+    }
+    /// create elements and add them
+    let parent1 = cssquery(".pfield");
+        parent1.innerHTML = "";
+    toShow.forEach((itemValue)=>{
+        
+        let profile = document.createElement("div")
+        profile.classList.add("profile")
+        parent1.append(profile)
+        let pimg = document.createElement("img")
+        pimg.setAttribute("src",itemValue.img)
+        profile.append(pimg);
+
+        let info = document.createElement("div")
+        info.classList.add("info")
+        profile.append(info);
+        let pcin = document.createElement("p")
+        pcin.innerHTML = itemValue.CIN
+        info.append(pcin)
+        let pname = document.createElement("p")
+        pname.innerHTML = itemValue.name
+        info.append(pname)
+        let plastName = document.createElement("p")
+        plastName.innerHTML = itemValue.lastName
+        info.append(plastName)
+        let pbranch = document.createElement("p")
+        pbranch.innerHTML = itemValue.branche  
+        info.append(pbranch)      
+
+
+        let grades = document.createElement("div")
+        grades.classList.add("grades")
+        profile.append(grades);
+        Object.entries(itemValue.module).forEach((items)=>{
+            let pmodule = document.createElement("p")
+            pmodule.innerHTML = `${items[0]}: ${items[1]}`
+            grades.append(pmodule)
+        })
+        
+    })
+})
+    
+     
+    
+    
 // reset
 cssquery("#res").addEventListener("click",(e) => {
     e.preventDefault();
@@ -385,16 +477,13 @@ function statRefresh(){
 
         let sum = 0;
         Stagiares.forEach((item) =>{
-            let Listtotal = Object.values(item)
+            let Listtotal = Object.values(item.module)
             let total = 0;
             let mod = 0;
             Listtotal.forEach((value, num)=>{
-                if (num > 3){
-                    mod +=1;
                     total += Number(value);
-                }
             })
-                total = total/mod
+                total = total/Listtotal.length
                 sum += total
 
            

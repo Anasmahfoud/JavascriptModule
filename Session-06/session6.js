@@ -44,9 +44,8 @@ let sm = sommes(3,7)
  console.log(variable(""))
  console.log(variable(12))
 
-//  const variable = (a,b) => {
-//     return a * b
-//  };
+
+
 
 
 

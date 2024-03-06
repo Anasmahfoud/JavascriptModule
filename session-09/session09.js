@@ -35,7 +35,7 @@ document.querySelector(".btn-delete").addEventListener("click", function() {
       const second =   document.querySelector(".funny");
       document.body.replaceChild(first,second);
     })
-.
+
 
 /// Create container and add class
 /// classList("") className = ""

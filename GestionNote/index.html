@@ -11,6 +11,23 @@
     <nav>
         <h1>GESTION STAGIAIRES</h1>
     </nav>
+    <div class="filter hide">
+        <form action="">
+            <input type="radio" name="searchType" value="cin" checked> <label for="">CIN</label>
+            <br>
+            <input type="radio" name="searchType" value="branch"> <label for="">Branche</label>
+            <br>
+            <input type="radio" name="searchType" value="avg"> <label for="">Moyenne</label>
+            <br>
+            <input type="radio" name="sort" value="eq" checked> <label for="" class="sorts">Equal</label>
+            <br>
+            <input type="radio" name="sort" value="big"> <label for="" class="sorts">Bigger</label>
+            <br>
+            <input type="radio" name="sort" value="low"> <label for="" class="sorts">Lower</label>
+        </form>
+        </form>
+        </form>
+    </div>
     <fieldset>
     <legend>GESTION DE STAGIAIRES</legend>
     <form action="">
@@ -32,19 +49,19 @@
         <label for="branche">Branch: </label>
         <br>
         <select name="" id="branche" >
-            <option value="">-- Choose Branch --</option>
+            <!-- <option value="">-- Choose Branch --</option>
             <option value="DD">Developpement Digitale</option>
             <option value="IR">Infrastructure de Reseaux</option>
-            <option value="GD">Design Graphique</option>
+            <option value="GD">Design Graphique</option> -->
         </select>
         <br>
         <p id="statusbranche">h</p>
         <label for="module">Module: </label>
         <br>
         <select name="" id="module">
-            <option value="">-- Select Branch first </option>
+           <!--  <option value="">-- Select Branch first </option>
             <option value=""></option>
-            <option value=""></option>
+            <option value=""></option> -->
         </select>
         <br>
         <p>h</p>
@@ -63,11 +80,10 @@
     </form>
     </fieldset>
     <fieldset>
-        <input type="search" id="searchInput" placeholder="search... "> <button id="search">SEARCH</button>
+        <input type="search" id="searchInput" placeholder="search... "> <button id="search">SEARCH</button> <a href="">Filter</a>
     </fieldset>
-    <fieldset>
-        <div><div id="profilepic"><img src="default-avatar-profile-icon-of-social-media-user-vector.jpg" alt="" ></div> <div><p id="profilecin">CIN: </p> <p id="profilename">Name:</p> <p id="profilelastname">Last Name:</p></div></div>
-        <div><div><p>Branche</p> <p id="profilebranche">Javascript</p></div><div><p>Modules</p> <p id="profilemodule1"></p> <p id="profilemodule2"></p> <p id="profilemodule3"></p></div></div>
+    <fieldset class="pfield">
+        
     </fieldset>
     <p style="display: hidden; align-items: center;" id="display" pl></p>
     <div id="stat">

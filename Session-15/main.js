@@ -10,7 +10,7 @@ console.log(Cat)
 // let keys = Cat.keys
 // let vals = Cat.values
 // let entries Cat.entries list of lists
-// entires[0] [2]
+// entries[0] [2]
 // Object.create(Cat, {}) prototype
 
 const stagiares = new Array("ANAS" , "KHALID" , "ZAKARIA", "OUAFIK" , "ANAS");

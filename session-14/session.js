@@ -39,7 +39,7 @@ cssquery("#submit").addEventListener("click",(e) =>{
     }
    
 
-    var pattern = /^([a-zA-Z0-9]{5,})+@gmail.com/;
+    var pattern = /([a-zA-Z0-9]{5,})+@gmail.com/;
 
     var result = pattern.test(Email)
 
