@@ -420,24 +420,28 @@ cssquery('#search').addEventListener("click",()=>{
         let profile = document.createElement("div")
         profile.classList.add("profile")
         parent1.append(profile)
+
+        let container = document.createElement("div")
+        container.classList.add("container")
+        profile.append(container)
         let pimg = document.createElement("img")
         pimg.setAttribute("src",itemValue.img)
-        profile.append(pimg);
+        container.append(pimg);
 
         let info = document.createElement("div")
         info.classList.add("info")
         profile.append(info);
         let pcin = document.createElement("p")
-        pcin.innerHTML = itemValue.CIN
+        pcin.innerHTML =  `-CIN: ${itemValue.CIN}`
         info.append(pcin)
         let pname = document.createElement("p")
-        pname.innerHTML = itemValue.name
+        pname.innerHTML = `-Name: ${itemValue.name}`
         info.append(pname)
         let plastName = document.createElement("p")
-        plastName.innerHTML = itemValue.lastName
+        plastName.innerHTML =  `-LastName: ${itemValue.lastName}`
         info.append(plastName)
         let pbranch = document.createElement("p")
-        pbranch.innerHTML = itemValue.branche  
+        pbranch.innerHTML = `-Branche: ${itemValue.branche}` 
         info.append(pbranch)      
 
 
@@ -446,9 +450,13 @@ cssquery('#search').addEventListener("click",()=>{
         profile.append(grades);
         Object.entries(itemValue.module).forEach((items)=>{
             let pmodule = document.createElement("p")
-            pmodule.innerHTML = `${items[0]}: ${items[1]}`
+            pmodule.innerHTML = `-${items[0]}: ${items[1]}`
             grades.append(pmodule)
         })
+        let pavg = document.createElement("p");
+        pavg.innerHTML = `-Average: ${itemValue.avg}`
+        pavg.style.fontSize = "1.4vw"
+        grades.append(pavg)
         
     })
 })

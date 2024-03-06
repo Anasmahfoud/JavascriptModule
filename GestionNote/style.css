@@ -283,22 +283,32 @@ fieldset:nth-of-type(3){
     align-items: center;
     width: 100%;
     padding: 0 0 1.5vw 0 ;
-    gap:160px;
+    gap:100px;
     border-bottom: 2px solid rgb(170, 168, 168);
 }
 .profile > div {
     display: flex;
     flex-direction:column ;
     justify-content: center;
-    align-items: center;
+    align-items: start;
 }
-.profile img{
-    margin-left: 20px;
+
+.profile .container{
+    overflow: hidden;
     height: 10vw;
     width: 10vw;
     border-radius: 100%;
+    margin-left: 20px;
+}
+.profile img{
+    height: 15vw;
 }
 
 .profile:last-of-type{
     border: none;
+}
+
+.profile p{
+    font-size: 1.3vw;
+    margin-bottom: 7px;
 }
