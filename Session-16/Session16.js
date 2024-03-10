@@ -1,4 +1,4 @@
-stagiare = {
+let stagiare = {
     nom:'AIT',
     prenom: 'MOHAMED',
     age : 17,

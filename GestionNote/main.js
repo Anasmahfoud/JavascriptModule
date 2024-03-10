@@ -272,7 +272,7 @@ cssquery("#sub").addEventListener("click", (e)=>{
         obj["module"] = {}
         obj["module"][modulev] = gradev;
         obj["img"] = img
-        obj["avg"] = Object.values(obj["module"]).reduce((total,itemValue)=>{return total + itemValue},0)/ Object.values(obj["module"]).length
+        obj["avg"] = Math.round(Object.values(obj["module"]).reduce((total,itemValue)=>{return total + itemValue},0)/ Object.values(obj["module"]).length);
 
         Stagiares.push(obj)
         console.log(obj)
@@ -322,7 +322,7 @@ cssquery("#modify").addEventListener("click" , (e)=>{
         obj["lastName"] = lastNamev ;
         obj["branche"] = branchev;
         obj["module"][modulev] = gradev;
-        obj["avg"] = (Object.values(Stagiares[indexs].module).reduce((total,itemValue)=>{return total + Number(itemValue)},0))/ Object.values(Stagiares[indexs].module).length
+        obj["avg"] = Math.round((Object.values(Stagiares[indexs].module).reduce((total,itemValue)=>{return total + Number(itemValue)},0))/ Object.values(Stagiares[indexs].module).length)
         statRefresh();
         }else if(signed == false){
         alert("This student doesn't exist.")
