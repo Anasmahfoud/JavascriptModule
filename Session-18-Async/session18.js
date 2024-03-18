@@ -45,23 +45,62 @@ function getData(myCallBackFunction){
 
 /// promise has 3 status "Pending" ,[something]("Fullfiled","error") 
 /// consume with .then() which is  callbackfunction
-let found = true;
-const Stagiares = getData().then((Response)=>{
+/*let found = true;
+getData().then((Response)=>{
+    console.log(Response)
+    return getModule()
+}).then((Response)=>{
     console.log(Response)
     return getNote(1)
-}).then((Response)=>{
+})
+.then((Response)=>{
     console.log(Response)
 })
 .catch((error)=>{
     console.log(error)
 })
+.finally(()=>{
+    alert("We are done!")
+})*/
 
 
-console.log(Stagiares)
+
+async function executeCode(){
+    try{
+        const stagiares = await getData();
+        const modules = await getModule();
+        const note = await getNote(1);
+        console.log(stagiares)
+        console.log(modules)
+        console.log(note)
+        if (note == 30){
+            // throw new Error("Bigger than 30!") : default format
+            throw ("Bigger than 30") // more customisable
+        }
+
+    }catch(err){
+        console.log(err)
+    }finally{
+        console.log("Done")
+    }
+}
+let found = true;
+executeCode()
+
+
 
 // promise returns new promise
 // object got resolve and reject
 /// function  producteur de promise
+
+function getModule(){
+    return new Promise((resolve,reject)=>{
+        resolve(["Pyhton", "Javascript", "PHP"])
+        reject("Can't find modules!")
+    })
+}
+
+
 
 function getData(){
 

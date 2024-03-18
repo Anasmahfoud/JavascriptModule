@@ -1,0 +1,35 @@
+{
+    "title" : "Stagiaires Data",
+    "Data" : [
+                {
+                 "id":0,
+                 "name" : "Anas",
+                 "age": 19,
+                 "grade": 30
+                },
+                {
+                 "id":1,
+                 "name" : "Ilyas",
+                 "age": 19,
+                 "grade": 40
+                },
+                {
+                 "id":2,
+                 "name" : "Mohammed",
+                 "age": 17,
+                 "grade": 25
+                },
+                {
+                 "id":3,
+                 "name" : "Zakaria",
+                 "age": 21,
+                 "grade": 40
+                },
+                {
+                 "id":4,
+                 "name" : "Khalid",
+                 "age": 21,
+                 "grade": 40
+                }
+             ]
+}
