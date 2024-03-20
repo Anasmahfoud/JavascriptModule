@@ -46,7 +46,7 @@ function loadTxt(){
             console.log(StagiaireList)
             document.getElementById("display2").innerHTML = "<ul id='stage'> </ul> "
             StagiaireList.forEach((itemValue)=>{
-                itemValue.toString = ()=>{return `Id: ${itemValue.id} ; Name: ${itemValue.name} ; Age: ${itemValue.age} ; Grade: ${itemValue.grade}`}
+                itemValue.toString = function(){return `Id: ${itemValue.id} ; Name: ${itemValue.name} ; Age: ${itemValue.age} ; Grade: ${itemValue.grade}`}
                 document.getElementById("stage").innerHTML += `<li> ${itemValue} </li>`
             })
             
