@@ -4,7 +4,7 @@ document.querySelector("#google").addEventListener('click',()=>{
 })
 
 
-setTimeout
+// setTimeout
 // sync async
 // use callBack (fucntion inside argument) and Promise
 // setTimeOut delay

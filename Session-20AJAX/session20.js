@@ -2,17 +2,17 @@ document.getElementById("btn-load").addEventListener("click",loadTxt)
 
 function loadTxt(){
     
-    let request = new XMLHttpRequest
+    let request = new XMLHttpRequest()
 
     request.open("GET","sample.txt",true)
 
 
     /* OPTIONAL
-    request.onerror() = function(err){
+    request.onerror = function(err){
 
     }
 
-    request.onprogress() = function(){
+    request.onprogress = function(){
 
     } */
 
@@ -59,6 +59,18 @@ function loadTxt(){
 }
 
 
+// POST
+document.querySelector("#btn-submit").addEventListener("click",SendTxt)
+function SendData(){
+    let s = new XMLHttpRequest()
+    s.open("GET","sample.txt", true)
+    s.onreadystatechange = function() {//Call a function when the state changes.
+        if(s.readyState == 4 && s.status == 200) {
+            alert(s.responseText);
+        }
+    }
+    s.send("i'ma Anas")
+}
 /// JSON
 
 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion Store</title>
+    <style>
+    table,th,td{
+        border: 2px solid black;
+    }
+    .selected{
+        background-color: green;
+    }
+    </style>
+</head>
+<body>
+    <div id="main">
+    <fieldset id="field" style="display: none;">
+    <form action="" id="form">
+        <label for="">Code</label><br><input placeholder="Code" type="number" id="code_produit" required><br>
+        <label for="">Titre</label><br><input placeholder="Titre" type="text" id="titre" required><br>
+        <label for="">Description</label><br><input placeholder="Description" type="text" id="description" required><br>
+        <label for="">Prix</label><br><input placeholder="Prix" type="number" id="prix" required><br>
+        <label for="">Catégorie</label><br><input placeholder="Catégorie" type="text" id="categorie" required><br>
+        <button id="sauvegarder">Sauvegarder</button>
+        <button id="annuler">Annuler</button>
+        <button id="vider">Vider</button>
+    </form>
+    </fieldset>
+    <table id="table" >
+    <tr>
+        <th>Code</th>
+        <th>Titre</th>
+        <th>Description</th>
+        <th>Prix</th>
+        <th>Catégorie</th>
+    </tr>
+    </table>
+    </div>
+    
+    <button id="ajouter">Ajouter</button>
+    <button id="supprimer">Supprimer</button><br>
+
+
+    <button id="afficherListe">Afficher liste de categorie</button><br>
+    <ul id="liste"></ul>
+
+    <script src="index.js"></script>
+</body>
+</html>
